@@ -6,6 +6,6 @@ export default defineConfig({
 	modules: ['@wxt-dev/module-react'],
 	manifest: {
 		permissions: ['declarativeNetRequest', 'webRequest'],
-		host_permissions: ['<all_urls>'],
+		host_permissions: ['https://chatgpt.com/*', 'https://claude.ai/*', 'https://grok.com/*'],
 	},
 })
