@@ -6,15 +6,24 @@ export default defineBackground(() => {
 					id: 1,
 					priority: 1,
 					action: {
-						type: 'modifyHeaders',
+						type: chrome.declarativeNetRequest.RuleActionType.MODIFY_HEADERS,
 						responseHeaders: [
-							{ header: 'content-security-policy', operation: 'remove' },
-							{ header: 'x-frame-options', operation: 'remove' },
+							{
+								header: 'content-security-policy',
+								operation: chrome.declarativeNetRequest.HeaderOperation.REMOVE,
+							},
+							{
+								header: 'x-frame-options',
+								operation: chrome.declarativeNetRequest.HeaderOperation.REMOVE,
+							},
 						],
 					},
 					condition: {
 						urlFilter: 'https://**',
-						resourceTypes: ['main_frame', 'sub_frame'],
+						resourceTypes: [
+							chrome.declarativeNetRequest.ResourceType.MAIN_FRAME,
+							chrome.declarativeNetRequest.ResourceType.SUB_FRAME,
+						],
 					},
 				},
 			],
